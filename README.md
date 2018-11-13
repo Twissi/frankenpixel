@@ -1,6 +1,13 @@
 # Frankenpixel
 
-```npm install``` 
+Yarn:
 
-```npm start``` 
+```brew install yarn```
+
+```yarn install``` 
+
+```yarn start``` 
+
+
+
 

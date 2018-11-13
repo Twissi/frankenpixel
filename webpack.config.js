@@ -14,6 +14,7 @@ module.exports = {
     publicPath: './dist/',
     filename: 'bundle.js'
   },
+  devtool: 'source-map',
   watch: true,
   plugins: [
     new webpack.DefinePlugin({

@@ -5,8 +5,7 @@
   "author": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack",
-    "deploy": ""
+    "start": "webpack"
   },
   "license": "MIT",
   "devDependencies": {
