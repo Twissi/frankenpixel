@@ -23,9 +23,6 @@ export default class extends Phaser.Scene {
     this.physics.world.enable(this.monster);
     this.physics.world.enable(this.player);
 
-    // this.physics.world.wrap(this.monster, 0);
-    // this.physics.world.wrap(this.player, 0);
-
     this.player.body.setCollideWorldBounds(true);
     this.physics.add.overlap(
       this.player,
@@ -37,7 +34,8 @@ export default class extends Phaser.Scene {
   }
 
   update() {
-    this.player.body.setVelocity(0);
+    this.player.body.setVelocity(50, 50);
+
     if (this.cursors.left.isDown) {
       this.player.body.setVelocityX(-300);
     } else if (this.cursors.right.isDown) {
@@ -51,6 +49,8 @@ export default class extends Phaser.Scene {
   }
 
   collision() {
+    this.monster.addBodyPart(this.player);
+    // this.player.nextBodyPart();
     console.log('collision');
   }
 }

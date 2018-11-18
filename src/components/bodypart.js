@@ -1,22 +1,26 @@
 import Phaser from 'phaser';
 import parts from '../parts';
 
-export default class BodyPart extends Phaser.GameObjects.Graphics {
-  constructor({ scene, part, options }) {
-    super(scene, options);
+export default class BodyPart extends Phaser.GameObjects.Rectangle {
+  constructor({ scene, part }) {
+    super(scene, 10, 10, 50, 50, 0x547d8b, 0.8);
 
     if (!part) {
       throw Error('Part type is missing or does not exist');
     }
+
     this._bodypartType = part;
-    this._initWidth = 50;
-    this._initHeight = 50;
 
-    this._x = 0;
-    this._y = 0;
+    // this.setSize(width, height);
+    // this.setX(scene.game.config.width / 2 - width / 2);
+    // this.setY(scene.game.config.height / 2 - height / 2);
+    // this.setFillStyle(0x547d8b, 0.8);
 
-    this.fillRect(this._x, this._y, this._initWidth, this._initHeight);
-    this.fillStyle(0x547d8b, 0.8);
+    if (this._bodypartType === parts.ARM) {
+      this.setFillStyle(0x547d8b, 0.8);
+    } else {
+      this.setFillStyle(0x234567, 0.8);
+    }
 
     scene.children.add(this);
   }
