@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import parts from '../parts';
+import { parts } from '../parts';
 
 export default class BodyPart extends Phaser.GameObjects.Rectangle {
   constructor({ scene, part }) {
@@ -17,10 +17,17 @@ export default class BodyPart extends Phaser.GameObjects.Rectangle {
     // this.setY(scene.game.config.height / 2 - height / 2);
     // this.setFillStyle(0x547d8b, 0.8);
 
-    if (this._bodypartType === parts.ARM) {
-      this.setFillStyle(0x547d8b, 0.8);
-    } else {
-      this.setFillStyle(0x234567, 0.8);
+    if (parts[this._bodypartType] === parts.ARM) {
+      this.setFillStyle(0xf06eaa, 0.8);
+    }
+    if (parts[this._bodypartType] === parts.LEG) {
+      this.setFillStyle(0xf26c4f, 0.8);
+    }
+    if (parts[this._bodypartType] === parts.HEART) {
+      this.setFillStyle(0xacd373, 0.8);
+    }
+    if (parts[this._bodypartType] === parts.MUSCLE) {
+      this.setFillStyle(0x0076a3, 0.8);
     }
 
     scene.children.add(this);

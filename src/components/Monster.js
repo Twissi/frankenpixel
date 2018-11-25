@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import parts from '../parts';
+import { parts } from '../parts';
 
 export default class Monster extends Phaser.GameObjects.Rectangle {
   constructor({ scene, options }) {

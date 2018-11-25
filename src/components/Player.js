@@ -1,4 +1,5 @@
 import Bodypart from './Bodypart';
+import { randomPart } from '../parts';
 
 export default class Player {
   constructor({ scene, physics, monster }) {
@@ -7,19 +8,15 @@ export default class Player {
     this._monster = monster;
     this._collider = null;
 
-    this._currentBodyPart = new Bodypart({
-      scene: this._currentScene,
-      part: 'ARM',
-    });
-
-    this._takeOver(this._currentBodyPart);
+    this._currentBodyPart = this._createBodyPart();
+    this._controlBodyPart(this._currentBodyPart);
   }
 
   get currentBodyPart() {
     return this._currentBodyPart;
   }
 
-  _takeOver(bodyPart) {
+  _controlBodyPart(bodyPart) {
     this._physics.add.existing(bodyPart);
     bodyPart.body.setCollideWorldBounds(true);
 
@@ -32,26 +29,21 @@ export default class Player {
     );
   }
 
-  // get nextObject() {
-  // }
-
-  // nextBodyPart() {
-  //   this._currentBodyPart = new Bodypart({
-  //     scene: this._currentScene,
-  //     part: 'LEG',
-  //   });
-  // }
+  _createBodyPart() {
+    const part = randomPart();
+    const bodypart = (this._currentBodyPart = new Bodypart({
+      scene: this._currentScene,
+      part: part,
+    }));
+    return bodypart;
+  }
 
   _collision() {
     console.log('collision');
     this._currentBodyPart.attach();
     this._collider.destroy();
 
-    this._currentBodyPart = new Bodypart({
-      scene: this._currentScene,
-      part: 'LEG',
-    });
-
-    this._takeOver(this._currentBodyPart);
+    this._createBodyPart();
+    this._controlBodyPart(this._currentBodyPart);
   }
 }
