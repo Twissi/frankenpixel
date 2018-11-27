@@ -24,7 +24,7 @@ export default class BodyPart extends Phaser.GameObjects.Image {
     scene.children.add(this);
   }
 
-  attach() {
+  pauseMovement() {
     this.body.setVelocity(0);
   }
 

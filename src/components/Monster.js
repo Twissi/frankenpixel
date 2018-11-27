@@ -14,7 +14,6 @@ export default class Monster extends Phaser.GameObjects.Image {
     );
 
     this._initBodyPart = 'hi';
-    this._bodyPartList = [];
 
     // this.setSize(width, height);
     // this.setX(scene.game.config.width / 2 - width / 2);
@@ -33,9 +32,5 @@ export default class Monster extends Phaser.GameObjects.Image {
   set position({ x, y }) {
     this._x = x;
     this._y = y;
-  }
-
-  addBodyPart(bodyPart) {
-    this._bodyPartList.push(bodyPart);
   }
 }

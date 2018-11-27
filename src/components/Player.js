@@ -2,13 +2,13 @@ import Bodypart from './Bodypart';
 import { randomPart } from '../parts';
 
 export default class Player {
-  constructor({ scene, physics, monster }) {
+  constructor({ scene, physics, group }) {
     this._currentScene = scene;
     this._physics = physics;
-    this._monster = monster;
+    this._group = group;
     this._collider = null;
 
-    this._currentBodyPart = this._createBodyPart();
+    this._currentBodyPart = this._createNewBodyPart();
     this._controlBodyPart(this._currentBodyPart);
   }
 
@@ -22,14 +22,14 @@ export default class Player {
 
     this._collider = this._physics.add.overlap(
       bodyPart,
-      this._monster,
+      this._group,
       this._collision,
       null,
       this
     );
   }
 
-  _createBodyPart() {
+  _createNewBodyPart() {
     const part = randomPart();
     const bodypart = (this._currentBodyPart = new Bodypart({
       scene: this._currentScene,
@@ -40,10 +40,12 @@ export default class Player {
 
   _collision() {
     console.log('collision');
-    this._currentBodyPart.attach();
+    this._currentBodyPart.pauseMovement();
     this._collider.destroy();
+    this._group.add(this._currentBodyPart);
 
-    this._createBodyPart();
+    // new body part
+    this._createNewBodyPart();
     this._controlBodyPart(this._currentBodyPart);
   }
 }
