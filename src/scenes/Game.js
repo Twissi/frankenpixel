@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import Monster from '../components/Monster';
+import MonsterGroup from '../components/MonsterGroup';
 import Player from '../components/Player';
 
 export default class extends Phaser.Scene {
@@ -15,10 +16,15 @@ export default class extends Phaser.Scene {
     });
     this.physics.add.existing(this.monster, true);
 
+    this.group = new MonsterGroup({ scene: this });
+
+    this.group.add(this.monster);
+
     this.player = new Player({
       scene: this,
       physics: this.physics,
       monster: this.monster,
+      group: this.group,
     });
 
     this.cursors = this.input.keyboard.createCursorKeys();

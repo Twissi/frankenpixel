@@ -10,7 +10,6 @@ export default class BodyPart extends Phaser.GameObjects.Rectangle {
     }
 
     this._bodypartType = part;
-    this._isAttached = false;
 
     // this.setSize(width, height);
     // this.setX(scene.game.config.width / 2 - width / 2);
@@ -37,12 +36,7 @@ export default class BodyPart extends Phaser.GameObjects.Rectangle {
     return this._bodypartType;
   }
 
-  get isAttached() {
-    return this._isAttached;
-  }
-
-  attach() {
-    this._isAttached = true;
+  pauseMovement() {
     this.body.setVelocity(0);
   }
 }
