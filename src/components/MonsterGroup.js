@@ -1,7 +1,6 @@
 import Phaser from 'phaser';
-import { parts } from '../parts';
 
-export default class Monster extends Phaser.GameObjects.Group {
+export default class MonsterGroup extends Phaser.GameObjects.Group {
   constructor({ scene, children }) {
     super(scene, children);
 
