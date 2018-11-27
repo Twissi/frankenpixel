@@ -12,6 +12,7 @@ export default class extends Phaser.Scene {
     this.load.image('mouth', 'assets/images/mouth.png');
     this.load.image('leg', 'assets/images/leg.png');
     this.load.image('arm', 'assets/images/arm1.png');
+    this.load.image('heart', 'assets/images/heart3.png');
   }
 
   create() {
