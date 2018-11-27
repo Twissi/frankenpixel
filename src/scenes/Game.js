@@ -7,7 +7,12 @@ export default class extends Phaser.Scene {
     super({ key: 'GameScene' });
   }
   init() {}
-  preload() {}
+  preload() {
+    this.load.image('eye', 'assets/images/eye.png');
+    this.load.image('mouth', 'assets/images/mouth.png');
+    this.load.image('leg', 'assets/images/leg.png');
+    this.load.image('arm', 'assets/images/arm1.png');
+  }
 
   create() {
     this.monster = new Monster({

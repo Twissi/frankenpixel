@@ -16,7 +16,7 @@ export default class Monster extends Phaser.GameObjects.Rectangle {
       0.8
     );
 
-    this._initBodyPart = parts.HEART;
+    this._initBodyPart = 'hi';
     this._bodyPartList = [];
 
     // this.setSize(width, height);
