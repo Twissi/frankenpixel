@@ -1,9 +1,9 @@
 const ARM = 0;
 const LEG = 1;
-const MUSCLE = 2;
-const HEART = 3;
+const MOUTH = 2;
+const EYE = 3;
 
-const parts = { ARM, LEG, MUSCLE, HEART };
+const parts = { ARM, LEG, MOUTH, EYE };
 
 const randomPart = () => {
   const keys = Object.keys(parts);

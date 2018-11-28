@@ -1,8 +1,8 @@
 import Phaser from 'phaser';
 import { parts } from '../parts';
 
-export default class Monster extends Phaser.GameObjects.Rectangle {
-  constructor({ scene }) {
+export default class Monster extends Phaser.GameObjects.Image {
+  constructor({ scene, options }) {
     let width = 100;
     let height = 100;
 
@@ -10,13 +10,11 @@ export default class Monster extends Phaser.GameObjects.Rectangle {
       scene,
       scene.game.config.width / 2,
       scene.game.config.height / 2,
-      width,
-      height,
-      0xd1edee,
-      0.8
+     'heart',
     );
 
-    this._initBodyPart = parts.HEART;
+    this._initBodyPart = 'hi';
+
     // this.setSize(width, height);
     // this.setX(scene.game.config.width / 2 - width / 2);
     // this.setY(scene.game.config.height / 2 - height / 2);

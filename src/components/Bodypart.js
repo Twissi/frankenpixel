@@ -1,42 +1,32 @@
 import Phaser from 'phaser';
 import { parts } from '../parts';
 
-export default class BodyPart extends Phaser.GameObjects.Rectangle {
+export default class BodyPart extends Phaser.GameObjects.Image {
   constructor({ scene, part }) {
-    super(scene, 10, 10, 50, 50, 0x547d8b, 0.8);
+
+    if (parts[part] === parts.ARM) {
+        super(scene, 100,75, 'arm');
+     }
+     if (parts[part] === parts.LEG) {
+        super(scene, 75,75, 'leg');
+     }
+     if (parts[part] === parts.MOUTH) {
+        super(scene, 50,25, 'mouth');
+     }
+     if (parts[part] === parts.EYE) {
+        super(scene, 25,25, 'eye');
+     }
 
     if (!part) {
       throw Error('Part type is missing or does not exist');
     }
 
-    this._bodypartType = part;
-
-    // this.setSize(width, height);
-    // this.setX(scene.game.config.width / 2 - width / 2);
-    // this.setY(scene.game.config.height / 2 - height / 2);
-    // this.setFillStyle(0x547d8b, 0.8);
-
-    if (parts[this._bodypartType] === parts.ARM) {
-      this.setFillStyle(0xf06eaa, 0.8);
-    }
-    if (parts[this._bodypartType] === parts.LEG) {
-      this.setFillStyle(0xf26c4f, 0.8);
-    }
-    if (parts[this._bodypartType] === parts.HEART) {
-      this.setFillStyle(0xacd373, 0.8);
-    }
-    if (parts[this._bodypartType] === parts.MUSCLE) {
-      this.setFillStyle(0x0076a3, 0.8);
-    }
-
     scene.children.add(this);
-  }
-
-  get type() {
-    return this._bodypartType;
   }
 
   pauseMovement() {
     this.body.setVelocity(0);
   }
+
+
 }
