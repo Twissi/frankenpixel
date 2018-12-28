@@ -1,6 +1,6 @@
 # Frankenpixel
 
-Yarn:
+## How to run the game
 
 ```brew install yarn```
 
