@@ -38,17 +38,19 @@ export default class extends Phaser.Scene {
 
   update() {
     const bodyPart = this.player.currentBodyPart;
-    bodyPart.body.setVelocity(50, 50);
+    if (bodyPart) {
+      bodyPart.body.setVelocity(50, 50);
 
-    if (this.cursors.left.isDown) {
-      bodyPart.body.setVelocityX(-300);
-    } else if (this.cursors.right.isDown) {
-      bodyPart.body.setVelocityX(300);
-    }
-    if (this.cursors.up.isDown) {
-      bodyPart.body.setVelocityY(-300);
-    } else if (this.cursors.down.isDown) {
-      bodyPart.body.setVelocityY(300);
+      if (this.cursors.left.isDown) {
+        bodyPart.body.setVelocityX(-300);
+      } else if (this.cursors.right.isDown) {
+        bodyPart.body.setVelocityX(300);
+      }
+      if (this.cursors.up.isDown) {
+        bodyPart.body.setVelocityY(-300);
+      } else if (this.cursors.down.isDown) {
+        bodyPart.body.setVelocityY(300);
+      }
     }
   }
 }

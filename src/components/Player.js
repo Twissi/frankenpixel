@@ -31,21 +31,29 @@ export default class Player {
 
   _createNewBodyPart() {
     const part = randomPart();
-    const bodypart = (this._currentBodyPart = new Bodypart({
+    const bodypart = new Bodypart({
       scene: this._currentScene,
       part: part,
-    }));
+    });
     return bodypart;
   }
 
   _collision() {
     console.log('collision');
+    console.log(this._group.children.size);
+
+    if (!this._currentBodyPart) {
+      return;
+    }
     this._currentBodyPart.pauseMovement();
     this._collider.destroy();
     this._group.add(this._currentBodyPart);
 
-    // new body part
-    this._createNewBodyPart();
-    this._controlBodyPart(this._currentBodyPart);
+    this._currentBodyPart = null;
+
+    if (!this._currentBodyPart && this._group.children.size < 30) {
+      this._currentBodyPart = this._createNewBodyPart();
+      this._controlBodyPart(this._currentBodyPart);
+    }
   }
 }
