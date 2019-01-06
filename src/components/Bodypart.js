@@ -26,4 +26,8 @@ export default class BodyPart extends Phaser.GameObjects.Image {
   pauseMovement() {
     this.body.setVelocity(0);
   }
+
+  rotate() {
+    this.setAngle(this.angle + 90);
+  }
 }

@@ -34,6 +34,10 @@ export default class extends Phaser.Scene {
     });
 
     this.cursors = this.input.keyboard.createCursorKeys();
+    this.SpaceKey = this.input.keyboard.addKey(
+      Phaser.Input.Keyboard.KeyCodes.SPACE
+    );
+    this.SpaceKeyWasDown = false;
   }
 
   update() {
@@ -50,6 +54,13 @@ export default class extends Phaser.Scene {
         bodyPart.body.setVelocityY(-300);
       } else if (this.cursors.down.isDown) {
         bodyPart.body.setVelocityY(300);
+      }
+      if (this.SpaceKey.isDown) {
+        this.SpaceKeyWasDown = true;
+      }
+      if (this.SpaceKey.isUp && this.SpaceKeyWasDown) {
+        this.SpaceKeyWasDown = false;
+        bodyPart.rotate();
       }
     }
   }
